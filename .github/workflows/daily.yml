@@ -1,0 +1,29 @@
+name: Daily DSA AI Bot
+
+on:
+  schedule:
+    - cron: '30 18 * * *'  # Daily IST
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run AI DSA bot
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: python main.py || true
+
+    - name: Push commits
+      run: |
+        git push
