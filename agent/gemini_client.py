@@ -2,7 +2,7 @@ import os
 import requests
 
 API_KEY = os.getenv("GEMINI_API_KEY")
-URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
 
 def call_gemini(prompt: str) -> str:
     response = requests.post(
