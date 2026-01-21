@@ -13,14 +13,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-    - uses: actions/setup-python@v4
+    - name: Setup Python
+      uses: actions/setup-python@v4
       with:
         python-version: '3.11'
 
     - name: Install dependencies
       run: pip install -r requirements.txt
+
+    # 🔴 THIS STEP WAS MISSING (CRITICAL)
+    - name: Configure git identity
+      run: |
+        git config --global user.name "automate-ai-bot"
+        git config --global user.email "automate-ai-bot@users.noreply.github.com"
 
     - name: Run AI DSA bot
       env:
@@ -28,5 +36,4 @@ jobs:
       run: python main.py || true
 
     - name: Push commits
-      run: |
-        git push
+      run: git push
