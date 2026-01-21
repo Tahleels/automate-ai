@@ -20,7 +20,7 @@ def decide_commit_count():
 
 today = date.today().isoformat()
 commit_count = decide_commit_count()
-base_dir = f"dsa/{today}"
+base_dir = f"automate/{today}"
 os.makedirs(base_dir, exist_ok=True)
 
 for i in range(1, commit_count + 1):
