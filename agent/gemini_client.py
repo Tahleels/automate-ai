@@ -1,18 +1,10 @@
 import os
-import requests
+import google.generativeai as genai
 
-API_KEY = os.getenv("GEMINI_API_KEY")
-URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 def call_gemini(prompt: str) -> str:
-    response = requests.post(
-        f"{URL}?key={API_KEY}",
-        json={
-            "contents": [{
-                "parts": [{"text": prompt}]
-            }]
-        },
-        timeout=30
-    )
-    response.raise_for_status()
-    return response.json()["candidates"][0]["content"]["parts"][0]["text"]
+    response = model.generate_content(prompt)
+    return response.text
