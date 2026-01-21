@@ -5,6 +5,9 @@ on:
     - cron: '30 18 * * *'  # Daily IST
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
