@@ -43,7 +43,9 @@ for i in range(1, commit_count + 1):
 
     except Exception as e:
         with open("PROGRESS.md", "a") as f:
-            f.write(f"\n### {today} – Fallback commit\n")
+            f.write(f"\n### {today} – ERROR\n{str(e)}\n")
+        raise
+
 
     subprocess.run(["git", "add", "."])
     subprocess.run([
