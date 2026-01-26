@@ -30,3 +30,5 @@ Purpose:
 ### 2026-01-25 – Problem 2
 
 ### 2026-01-25 – Problem 3
+
+### 2026-01-26 – Problem 1
