@@ -38,3 +38,5 @@ Purpose:
 ### 2026-01-28 – Problem 1
 
 ### 2026-01-28 – Problem 2
+
+### 2026-01-28 – Problem 3
